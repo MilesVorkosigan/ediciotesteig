@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="Biblioteca">
+  <ClassDiagramComponents>
+    <Class name="Llibre" package="" visibility="public" xPosition="260.0" yPosition="34.0">
+      <Fields>
+        <Field name="nom" type="String" visibility="private"/>
+        <Field name="editorial" type="String" visibility="private"/>
+        <Field name="any" type="int" visibility="private"/>
+        <Field name="pag" type="int" visibility="private"/>
+        <Field name="Tipus" type="List" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Autor" package="" visibility="public" xPosition="23.0" yPosition="295.0">
+      <Fields>
+        <Field name="IdAutor" type="String" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Lector" package="" visibility="public" xPosition="260.0" yPosition="459.0">
+      <Fields>
+        <Field name="IdLector" type="String" visibility="private"/>
+        <Field name="numTel" type="int" visibility="private"/>
+        <Field name="email" type="String" visibility="private"/>
+        <Field name="adresa" type="String" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Copia" package="" visibility="public" xPosition="467.0" yPosition="34.0">
+      <Fields>
+        <Field name="IdCopia" type="String" visibility="private"/>
+        <Field name="estat" type="Estat" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Biblioteca" package="" visibility="public" xPosition="260.0" yPosition="266.0">
+      <Fields/>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Prestec" package="" visibility="public" xPosition="534.0" yPosition="249.0">
+      <Fields>
+        <Field name="IdPrestec" type="String" visibility="private"/>
+        <Field name="dataEntrega" type="Date" visibility="private"/>
+        <Field name="dataDevolucio" type="Date" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Persona" package="" visibility="public" isAbstract="true" xPosition="23.0" yPosition="451.0">
+      <Fields>
+        <Field name="nom" type="String" visibility="private"/>
+        <Field name="nacionalitat" type="String" visibility="private"/>
+        <Field name="naixement" type="Date" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Enum name="Tipus" package="" visibility="public" xPosition="23.0" yPosition="21.0">
+      <Literals>
+        <Literal name="LITERATURACLASICA"/>
+        <Literal name="CIENCIAFICCIO"/>
+        <Literal name="FANTASIA"/>
+        <Literal name="NOVELA"/>
+        <Literal name="POESIA"/>
+        <Literal name="ROMANTICA"/>
+        <Literal name="TERROR"/>
+        <Literal name="INFORMATICA"/>
+        <Literal name="ENGINYERIA"/>
+      </Literals>
+    </Enum>
+    <Enum name="Estat" package="" visibility="public" xPosition="737.0" yPosition="2.0">
+      <Literals>
+        <Literal name="LLOGUER"/>
+        <Literal name="RETRAS"/>
+        <Literal name="REPARACIO"/>
+        <Literal name="TORNAT"/>
+        <Literal name="ESTANTERIA"/>
+      </Literals>
+    </Enum>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <HasRelation name="ha sortit" source="Prestec" target="Copia" type="Aggregation" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <HasRelation name="poseix" source="Biblioteca" target="Copia" type="Composition" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
+    <HasRelation name="te" source="Llibre" target="Autor" type="Aggregation" sourceCardinality="0..1" targetCardinality="0..*" collectionType="List"/>
+    <HasRelation name="abonat" source="Biblioteca" target="Lector" type="Composition" sourceCardinality="0..1" targetCardinality="0..*" collectionType="List"/>
+    <HasRelation name="sortida" source="Biblioteca" target="Prestec" type="Composition" sourceCardinality="0..1" targetCardinality="0..*" collectionType="List"/>
+    <IsRelation name="is" source="Autor" target="Persona"/>
+    <IsRelation name="is" source="Copia" target="Llibre"/>
+    <IsRelation name="is" source="Lector" target="Persona"/>
+    <HasRelation name="ha agafat" source="Prestec" target="Lector" type="Aggregation" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
+    <HasRelation name="Tipus" source="Llibre" target="Tipus" type="Default" sourceCardinality="0..1" targetCardinality="1..*" collectionType="ArrayList"/>
+    <HasRelation name="on es troba" source="Copia" target="Estat" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
